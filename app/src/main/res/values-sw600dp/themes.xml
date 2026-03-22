@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Überschreibe das Haupttheme für sw600dp+ Geräte -->
+    <style name="Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Füge hier tablet-spezifische Anpassungen hinzu, falls nötig -->
+        <!-- z.B. andere Primärfarben, Abstände, etc. -->
+        <!-- <item name="colorPrimary">@color/tablet_primary</item> -->
+    </style>
+</resources>
