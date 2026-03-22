@@ -1,130 +1,117 @@
 package com.example.kalkapp
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.notkamui.keval.Keval
-import com.notkamui.keval.KevalInvalidExpressionException
-import com.notkamui.keval.KevalZeroDivisionException
 
-/**
- * * Grundrechenarten (Addition, Subtraktion, Multiplikation, Division)
- * * mehr als zwei Operanden und mehr als einen Operator eingebbar
- * * Ergebnis der Berechnung für die nächste Berechnung verwenden können
- * * Fehlermeldung: "ERROR"
- * * Historienverwaltung
- *      - MR & MS mit zwei Speichernplätzen (Click und LongClick nutzen)
- */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var display: TextView
-    private var currentInput = ""
-    private val memorySlots = arrayOfNulls<String>(2) // zwei Speicherplätze
-    private var currentMemoryIndex = 0 // auf welchen Speicherplatz wird als nächstes geschrieben
+    private lateinit var copyPopup: LinearLayout
+
+    // Logik instanziieren mit Callback für UI-Updates
+    private val kalkLogic = KalkLogic { text ->
+        if (::display.isInitialized) {
+            display.text = text
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        display = findViewById<TextView>(R.id.display)
+        display = findViewById(R.id.display)
+        copyPopup = findViewById(R.id.copy_popup)
 
-        // --- OnClickListener für alle Btn registrieren --
+        display.setOnClickListener {
+            if (kalkLogic.isResultDisplayed()) {
+                val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                val clip = ClipData.newPlainText("KalkApp Ergebnis", kalkLogic.getCurrentInput())
+                clipboard.setPrimaryClip(clip)
+                
+                showCopyPopup()
+            }
+        }
 
-        // Zahlen
-        findViewById<Button>(R.id.btn_zero).setOnClickListener { appendToInput("0") }
-        findViewById<Button>(R.id.btn_one).setOnClickListener { appendToInput("1") }
-        findViewById<Button>(R.id.btn_two).setOnClickListener { appendToInput("2") }
-        findViewById<Button>(R.id.btn_three).setOnClickListener { appendToInput("3") }
-        findViewById<Button>(R.id.btn_four).setOnClickListener { appendToInput("4") }
-        findViewById<Button>(R.id.btn_five).setOnClickListener { appendToInput("5") }
-        findViewById<Button>(R.id.btn_six).setOnClickListener { appendToInput("6") }
-        findViewById<Button>(R.id.btn_seven).setOnClickListener { appendToInput("7") }
-        findViewById<Button>(R.id.btn_eight).setOnClickListener { appendToInput("8") }
-        findViewById<Button>(R.id.btn_nine).setOnClickListener { appendToInput("9") }
+        // Numbers
+        findViewById<Button>(R.id.btn_zero).setOnClickListener { kalkLogic.appendToInput("0") }
+        findViewById<Button>(R.id.btn_one).setOnClickListener { kalkLogic.appendToInput("1") }
+        findViewById<Button>(R.id.btn_two).setOnClickListener { kalkLogic.appendToInput("2") }
+        findViewById<Button>(R.id.btn_three).setOnClickListener { kalkLogic.appendToInput("3") }
+        findViewById<Button>(R.id.btn_four).setOnClickListener { kalkLogic.appendToInput("4") }
+        findViewById<Button>(R.id.btn_five).setOnClickListener { kalkLogic.appendToInput("5") }
+        findViewById<Button>(R.id.btn_six).setOnClickListener { kalkLogic.appendToInput("6") }
+        findViewById<Button>(R.id.btn_seven).setOnClickListener { kalkLogic.appendToInput("7") }
+        findViewById<Button>(R.id.btn_eight).setOnClickListener { kalkLogic.appendToInput("8") }
+        findViewById<Button>(R.id.btn_nine).setOnClickListener { kalkLogic.appendToInput("9") }
 
-        // Operatoren
-        findViewById<Button>(R.id.btn_add).setOnClickListener { appendToInput("+") }
-        findViewById<Button>(R.id.btn_subtract).setOnClickListener { appendToInput("-") }
-        findViewById<Button>(R.id.btn_mult).setOnClickListener { appendToInput("*") }
-        findViewById<Button>(R.id.btn_div).setOnClickListener { appendToInput("/") }
-        findViewById<Button>(R.id.btn_decimal).setOnClickListener { appendToInput(".") }
+        // Operators
+        findViewById<Button>(R.id.btn_add).setOnClickListener { kalkLogic.appendToInput("+") }
+        findViewById<Button>(R.id.btn_subtract).setOnClickListener { kalkLogic.appendToInput("-") }
+        findViewById<Button>(R.id.btn_mult).setOnClickListener { kalkLogic.appendToInput("*") }
+        findViewById<Button>(R.id.btn_div).setOnClickListener { kalkLogic.appendToInput("/") }
+        findViewById<Button>(R.id.btn_decimal).setOnClickListener { kalkLogic.appendToInput(".") }
+
+        // +/-
+        findViewById<Button>(R.id.btn_sign_change).setOnClickListener { kalkLogic.toggleSign() }
 
         // Clear
-        findViewById<Button>(R.id.btn_zero).setOnClickListener { clearDisplay() }
+        findViewById<Button>(R.id.btn_clear).setOnClickListener { kalkLogic.clearDisplay() }
+        findViewById<Button>(R.id.btn_clear_entry).setOnClickListener { kalkLogic.clearEntry() }
+
+        // ( )
+        findViewById<Button>(R.id.btn_parentheses).setOnClickListener { kalkLogic.toggleParentheses() }
 
         // Equals
-        findViewById<Button>(R.id.btn_equals).setOnClickListener { evaluateAndShowResult() }
+        findViewById<Button>(R.id.btn_equals).setOnClickListener { kalkLogic.evaluateAndShowResult() }
 
         // Mem Save (MS)
-        findViewById<Button>(R.id.btn_mem_save).setOnClickListener { saveToMemory() }
+        findViewById<Button>(R.id.btn_mem_save).setOnClickListener { kalkLogic.saveToMemory() }
 
-        // Mem Read (MR) - klick für [0], langer klick für [1]
+        // Mem Read (MR)
         val btnMemRead = findViewById<Button>(R.id.btn_mem_read)
-        btnMemRead.setOnClickListener { readFromMemory(0) }
+        btnMemRead.setOnClickListener { kalkLogic.loadValueFromMemory(0) }
         btnMemRead.setOnLongClickListener {
-            readFromMemory(1)
+            kalkLogic.loadValueFromMemory(1)
             true
         }
 
+        // Tablet Btns
+        findViewById<Button>(R.id.btn_sin)?.setOnClickListener { kalkLogic.appendSin() }
+        findViewById<Button>(R.id.btn_cos)?.setOnClickListener { kalkLogic.appendCos() }
+        findViewById<Button>(R.id.btn_tan)?.setOnClickListener { kalkLogic.appendTan() }
+        findViewById<Button>(R.id.btn_sqrt)?.setOnClickListener { kalkLogic.appendSqrt() }
     }
 
-    private fun appendToInput(value: String){
-        // Todo: zwei Operatoren hintereinander verbieten und anderes unlogisches Verhalten
-        currentInput += value
-        updateDisplay(currentInput)
+    private fun showCopyPopup() {
+        copyPopup.visibility = View.VISIBLE
+        copyPopup.postDelayed({
+            copyPopup.visibility = View.GONE
+        }, 3000)
     }
 
-    private fun updateDisplay(text: String) {
-        display.text = text
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_calculator, menu)
+        return true
     }
 
-    private fun clearDisplay() {
-        currentInput = ""
-        updateDisplay("0")
-    }
-
-    private fun evaluateAndShowResult() {
-        if (currentInput.isBlank()) return
-
-        try{
-            // Keval für die Auswertung
-            val result = Keval.eval(currentInput)
-            // if result is decimal AND .0 -> omit digits after decimal (cast to int first)
-            val resultString = if (result % 1 == 0.0) result.toInt().toString() else result.toString()
-            currentInput = resultString
-            updateDisplay(resultString)
-        } catch (e: KevalZeroDivisionException) {
-            handleError()
-        } catch (e: KevalInvalidExpressionException) {
-            handleError()
-        } catch (e: Exception) {
-            // Rest abfangen
-            handleError()
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_function_sin -> kalkLogic.appendSin()
+            R.id.menu_function_cos -> kalkLogic.appendCos()
+            R.id.menu_function_tan -> kalkLogic.appendTan()
+            R.id.menu_function_sqrt -> kalkLogic.appendSqrt()
+            else -> return super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun handleError() {
-        updateDisplay("ERROR")
-    }
-
-    private fun saveToMemory() {
-        if (currentInput.isNotBlank() && currentInput != "ERROR") {
-            memorySlots[currentMemoryIndex] = currentInput
-            // zum nächsten Index wechseln
-            currentMemoryIndex = (currentMemoryIndex + 1) % 2
-        }
-    }
-
-    private fun readFromMemory(slotIndex: Int) {
-        val storedValue = memorySlots[slotIndex]
-        if(!storedValue.isNullOrBlank()) {
-            currentInput = storedValue
-            updateDisplay(currentInput)
-        }
+        return true
     }
 }

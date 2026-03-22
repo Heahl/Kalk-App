@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="button">Button</string>
+    <string name="menu_scientific_title">Wissensch.</string>
+    <string name="menu_function_sin">Sinus</string>
+    <string name="menu_function_cos">Cosinus</string>
+    <string name="menu_function_tan">Tangens</string>
+    <string name="menu_function_sqrt">Wurzel</string>
 </resources>

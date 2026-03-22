@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/menu_scientific_functions"
+        android:title="@string/menu_scientific_title"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/menu_function_sin"
+                android:title="@string/menu_function_sin" />
+            <item
+                android:id="@+id/menu_function_cos"
+                android:title="@string/menu_function_cos" />
+            <item
+                android:id="@+id/menu_function_tan"
+                android:title="@string/menu_function_tan"/>
+            <item
+                android:id="@+id/menu_function_sqrt"
+                android:title="@string/menu_function_sqrt"/>
+        </menu>
+</item>
+
+</menu>
