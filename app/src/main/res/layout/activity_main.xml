@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,7 +30,7 @@
             android:layout_marginBottom="30dp"
             android:layout_marginTop="50dp"
             android:padding="16dp"
-            android:text="0"
+            android:text="@string/_0"
             android:textColor="@color/material_dynamic_primary10"
             android:textSize="100sp"
             android:maxLines="1"
@@ -56,11 +55,11 @@
                 android:id="@+id/btn_clear"
                 style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="0dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="25sp"
-                android:text="C"
+                android:text="@string/c"
                 />
 
                 <Button
@@ -69,9 +68,9 @@
                     android:layout_width="0dp"
                     android:layout_height="72dp"
                     android:layout_weight="1"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginEnd="8dp"
                     android:textSize="25sp"
-                    android:text="CE"
+                    android:text="@string/ce"
                     />
 
             <Button
@@ -79,10 +78,10 @@
                 style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:textSize="25sp"
-                android:text="MR" />
+                android:text="@string/mr" />
 
             <Button
                 android:id="@+id/btn_mem_save"
@@ -91,7 +90,7 @@
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="25sp"
-                android:text="MS" />
+                android:text="@string/ms" />
 
 
         </LinearLayout>
@@ -105,31 +104,31 @@
                 android:id="@+id/btn_seven"
                 style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="0dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="7" />
+                android:text="@string/_7" />
 
             <Button
                 android:id="@+id/btn_eight"
                 style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="0dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="8" />
+                android:text="@string/_8" />
 
             <Button
                 android:id="@+id/btn_nine"
                 style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="0dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="9"/>
+                android:text="@string/_9"/>
 
             <Button
                 android:id="@+id/btn_div"
@@ -138,7 +137,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="/" />
+                android:text="@string/slash" />
         </LinearLayout>
 
         <LinearLayout
@@ -150,31 +149,31 @@
                 android:id="@+id/btn_four"
                 style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="0dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="4" />
+                android:text="@string/_4" />
 
             <Button
                 android:id="@+id/btn_five"
                 style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="0dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="5"/>
+                android:text="@string/_5"/>
 
             <Button
                 android:id="@+id/btn_six"
                 style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="0dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="6"/>
+                android:text="@string/_6"/>
 
             <Button
                 android:id="@+id/btn_mult"
@@ -183,7 +182,7 @@
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="*"/>
+                android:text="@string/star"/>
 
         </LinearLayout>
 
@@ -196,31 +195,31 @@
                 android:id="@+id/btn_one"
                 style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="0dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="1"/>
+                android:text="@string/_1"/>
 
             <Button
                 android:id="@+id/btn_two"
                 style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="0dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="2"/>
+                android:text="@string/_2"/>
 
             <Button
                 android:id="@+id/btn_three"
                 style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="0dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="3"/>
+                android:text="@string/_3"/>
 
             <Button
                 android:id="@+id/btn_subtract"
@@ -229,7 +228,7 @@
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="-"/>
+                android:text="@string/minus"/>
         </LinearLayout>
 
         <LinearLayout
@@ -242,31 +241,31 @@
                 style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="0dp"
                 android:layout_height="72dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:textSize="28sp"
-                android:text="+/-"
+                android:text="@string/plusMinus"
                 />
 
             <Button
                 android:id="@+id/btn_zero"
                 style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="0dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="0"/>
+                android:text="@string/_0"/>
 
             <Button
                 android:id="@+id/btn_decimal"
                 style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="0dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="."/>
+                android:text="@string/dot"/>
 
             <Button
                 android:id="@+id/btn_add"
@@ -275,7 +274,7 @@
                 android:layout_height="72dp"
                 android:layout_weight="1"
                 android:textSize="32sp"
-                android:text="+"/>
+                android:text="@string/plus"/>
 
         </LinearLayout>
             <LinearLayout
@@ -291,8 +290,8 @@
                     android:layout_height="72dp"
                     android:layout_weight="3"
                     android:textSize="28sp"
-                    android:layout_marginRight="8dp"
-                    android:text="="/>
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/equals"/>
 
                 <Button
                     android:id="@+id/btn_parentheses"
@@ -301,7 +300,7 @@
                     android:layout_height="72dp"
                     android:layout_weight="1"
                     android:textSize="28sp"
-                    android:text="( )"/>
+                    android:text="@string/parentheses"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -324,13 +323,13 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_copy"
-            android:contentDescription="Copy Icon" />
+            android:contentDescription="@string/copy_icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Kopiert"
+            android:text="@string/kopiert"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
     </LinearLayout>

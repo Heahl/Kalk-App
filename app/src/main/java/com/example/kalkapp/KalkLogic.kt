@@ -1,8 +1,6 @@
 package com.example.kalkapp
 
 import com.notkamui.keval.Keval
-import com.notkamui.keval.KevalInvalidExpressionException
-import com.notkamui.keval.KevalZeroDivisionException
 import kotlin.math.*
 
 /**
@@ -114,20 +112,20 @@ class KalkLogic(private val onUpdate: (String) -> Unit) {
             return "0"
         }
 
+        println("Evaluating expression: $currentInput")
         try {
             val result = keval.eval(currentInput)
+            println("Result (number): $result")
+
             val resultString = formatResult(result)
+            println("ResultString: $resultString")
+
             currentInput = resultString
             isResultCurrentlyDisplayed = true
             onUpdate(currentInput)
             return resultString
-        } catch (e: KevalZeroDivisionException) {
-            handleError()
-            return "ERROR"
-        } catch (e: KevalInvalidExpressionException) {
-            handleError()
-            return "ERROR"
         } catch (e: Exception) {
+            println("Eval Error: ${e.message}")
             handleError()
             return "ERROR"
         }
@@ -217,10 +215,10 @@ class KalkLogic(private val onUpdate: (String) -> Unit) {
      * Wechselt das Vorzeichen des aktuellen Eingabepuffers oder des letzten
      * gefundenen Operanden im Puffer.
      *
-     * *   Wenn ein Ergebnis angezeigt wird ([isResultCurrentlyDisplayed] = true),
-     *     wird das Vorzeichen des Ergebniswerts geändert.
-     * *   Wenn kein Ergebnis angezeigt wird, wird das Vorzeichen des *letzten*
-     *     gefundenen numerischen Terms (Zahl, mit/ohne Vorzeichen) geändert.
+     * * Wenn ein Ergebnis angezeigt wird ([isResultCurrentlyDisplayed] = true),
+     *   wird das Vorzeichen des Ergebniswerts geändert.
+     * * Wenn kein Ergebnis angezeigt wird, wird das Vorzeichen des *letzten*
+     *   gefundenen numerischen Terms (Zahl, mit/ohne Vorzeichen) geändert.
      *
      * @return Der aktualisierte Wert von [currentInput].
      */
@@ -414,7 +412,7 @@ class KalkLogic(private val onUpdate: (String) -> Unit) {
     private fun findLastTerm(input: String): Triple<Int, Int, String> {
         if (input.isEmpty()) return Triple(-1, -1, "")
 
-        var index = input.length - 1
+        val index = input.length - 1
         val lastChar = input[index]
 
         return when {

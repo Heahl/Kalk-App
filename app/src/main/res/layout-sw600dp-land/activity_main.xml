@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,7 +30,7 @@
                 android:elevation="4dp"
                 android:gravity="bottom|end"
                 android:padding="24dp"
-                android:text="0"
+                android:text="@string/_0"
                 android:textColor="@color/material_dynamic_primary10"
                 android:textSize="80sp"
                 android:maxLines="2"
@@ -56,7 +55,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="Sin"
+                android:text="@string/sin"
                 android:textSize="20sp"/>
 
             <Button
@@ -67,7 +66,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="Cos"
+                android:text="@string/cos"
                 android:textSize="20sp"/>
 
 
@@ -79,7 +78,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="Tan"
+                android:text="@string/tan"
                 android:textSize="20sp"/>
 
             <Button
@@ -90,7 +89,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="Sqrt"
+                android:text="@string/sqrt"
                 android:textSize="20sp"/>
 
             <!-- Reihe 0 -->
@@ -102,7 +101,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="C"
+                android:text="@string/c"
                 android:textSize="20sp" />
 
             <Button
@@ -113,7 +112,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="CE"
+                android:text="@string/ce"
                 android:textSize="20sp" />
 
             <Button
@@ -124,7 +123,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="MR"
+                android:text="@string/mr"
                 android:textSize="20sp" />
 
             <Button
@@ -135,7 +134,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="MS"
+                android:text="@string/ms"
                 android:textSize="20sp" />
 
             <!-- Reihe 1 -->
@@ -147,7 +146,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="7"
+                android:text="@string/_7"
                 android:textSize="24sp" />
 
             <Button
@@ -158,7 +157,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="8"
+                android:text="@string/_8"
                 android:textSize="24sp" />
 
             <Button
@@ -169,7 +168,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="9"
+                android:text="@string/_9"
                 android:textSize="24sp" />
 
             <Button
@@ -180,7 +179,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="/"
+                android:text="@string/slash"
                 android:textSize="24sp" />
 
             <!-- Reihe 2 -->
@@ -192,7 +191,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="4"
+                android:text="@string/_4"
                 android:textSize="24sp" />
 
             <Button
@@ -203,7 +202,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="5"
+                android:text="@string/_5"
                 android:textSize="24sp" />
 
             <Button
@@ -214,7 +213,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="6"
+                android:text="@string/_6"
                 android:textSize="24sp" />
 
             <Button
@@ -225,7 +224,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="*"
+                android:text="@string/star"
                 android:textSize="24sp" />
 
             <!-- Reihe 3 -->
@@ -237,7 +236,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="1"
+                android:text="@string/_1"
                 android:textSize="24sp" />
 
             <Button
@@ -248,7 +247,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="2"
+                android:text="@string/_2"
                 android:textSize="24sp" />
 
             <Button
@@ -259,7 +258,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="3"
+                android:text="@string/_3"
                 android:textSize="24sp" />
 
             <Button
@@ -270,7 +269,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="-"
+                android:text="@string/minus"
                 android:textSize="24sp" />
 
             <!-- Reihe 4 -->
@@ -282,7 +281,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="+/-"
+                android:text="@string/plusMinus"
                 android:textSize="20sp" />
 
             <Button
@@ -293,7 +292,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="0"
+                android:text="@string/_0"
                 android:textSize="24sp" />
 
             <Button
@@ -304,7 +303,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="."
+                android:text="@string/dot"
                 android:textSize="24sp" />
 
             <Button
@@ -315,7 +314,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="+"
+                android:text="@string/plus"
                 android:textSize="24sp" />
 
             <!-- Reihe 5: Equals & Parentheses -->
@@ -330,7 +329,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="="
+                android:text="@string/equals"
                 android:textSize="28sp" />
 
             <Button
@@ -344,7 +343,7 @@
                 android:layout_rowWeight="1"
                 android:layout_columnWeight="1"
                 android:layout_marginEnd="4dp"
-                android:text="( )"
+                android:text="@string/parentheses"
                 android:textSize="24sp" />
 
         </GridLayout>
@@ -367,13 +366,13 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_copy"
-            android:contentDescription="Copy Icon" />
+            android:contentDescription="@string/copy_icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Kopiert"
+            android:text="@string/kopiert"
             android:textColor="@android:color/white"
             android:textSize="18sp" />
     </LinearLayout>

@@ -6,4 +6,32 @@
     <string name="menu_function_cos">Cosinus</string>
     <string name="menu_function_tan">Tangens</string>
     <string name="menu_function_sqrt">Wurzel</string>
+    <string name="_0">0</string>
+    <string name="c">C</string>
+    <string name="ce">CE</string>
+    <string name="mr">MR</string>
+    <string name="ms">MS</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="slash">/</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="star">*</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="minus">-</string>
+    <string name="plusMinus">+/-</string>
+    <string name="dot">.</string>
+    <string name="plus">+</string>
+    <string name="equals">=</string>
+    <string name="parentheses">( )</string>
+    <string name="copy_icon">Copy Icon</string>
+    <string name="kopiert">Kopiert</string>
+    <string name="sin">Sin</string>
+    <string name="cos">Cos</string>
+    <string name="tan">Tan</string>
+    <string name="sqrt">Sqrt</string>
 </resources>
